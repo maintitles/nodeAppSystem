@@ -73,7 +73,11 @@
             submitForm(){
                 this.$axios.post(`/api/users/register`,this.registerUser)
                 .then((res) => {
-                    console.log(res)
+                    this.$message({
+                        message:"注册成功！",
+                        type:"success"
+                    });
+                    // this.$router.push("/login");
                 })
             }
         }
