@@ -25,6 +25,7 @@
                 </el-form-item>
                 <el-form-item>
                     <el-button type="primary" @click="submitForm('registerForm')">注 册</el-button>
+                    <el-button type="primary" @click="loginPage">登录</el-button>
                 </el-form-item>
             </el-form>
         </section>
@@ -70,14 +71,17 @@
             }
         },
         methods:{
+            loginPage(){
+                this.$router.push("/login")
+            },
             submitForm(){
                 this.$axios.post(`/api/users/register`,this.registerUser)
                 .then((res) => {
                     this.$message({
-                        message:"注册成功！",
+                        message:"账号注册成功！",
                         type:"success"
                     });
-                    // this.$router.push("/login");
+                    this.$router.push("/login");
                 })
             }
         }
