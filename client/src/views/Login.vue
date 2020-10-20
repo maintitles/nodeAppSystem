@@ -57,8 +57,18 @@
                     const { token } = res.data;
                     localStorage.setItem("eleToken",token);
                     const decoded = jwt_decode(token);//解析token
+                    this.$store.dispatch("setIsAutnenticated", !this.isEmpty(decoded));
+                    this.$store.dispatch("setUser", decoded);
                     this.$router.push("/index");
                 })
+            },
+            isEmpty(value) {
+                return (
+                    value === undefined ||
+                    value === null ||
+                    (typeof value === "object" && Object.keys(value).length === 0) ||
+                    (typeof value === "string" && value.trim().length === 0)
+                );
             }
         }
     }

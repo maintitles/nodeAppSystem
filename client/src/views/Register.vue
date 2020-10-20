@@ -25,8 +25,11 @@
                 </el-form-item>
                 <el-form-item>
                     <el-button type="primary" @click="submitForm('registerForm')">注 册</el-button>
-                    <el-button type="primary" @click="loginPage">登录</el-button>
+                    <!-- <el-button type="primary" @click="loginPage">登录</el-button> -->
                 </el-form-item>
+                <div class="tiparea">
+                    <p>已有账号？前往 <router-link to="login">登录</router-link></p>
+                </div>
             </el-form>
         </section>
     </div>
@@ -71,9 +74,9 @@
             }
         },
         methods:{
-            loginPage(){
-                this.$router.push("/login")
-            },
+            // loginPage(){
+            //     this.$router.push("/login")
+            // },
             submitForm(){
                 this.$axios.post(`/api/users/register`,this.registerUser)
                 .then((res) => {
@@ -122,5 +125,13 @@
 
 .submit_btn {
     width: 100%;
+}
+.tiparea {
+  text-align: right;
+  font-size: 12px;
+  color: #333;
+}
+.tiparea p a {
+  color: #409eff;
 }
 </style>
