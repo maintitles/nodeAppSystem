@@ -1,16 +1,20 @@
 <template>
     <div class="index">
         <HeadNav />
-        <router-view></router-view>
+        <LeftMenu />
+        <div class="rightContainer">
+            <router-view></router-view>
+        </div>
     </div>
 </template>
 
 <script>
     import HeadNav from "../components/HeadNav.vue"
+    import LeftMenu from "../components/LeftMenu.vue"
     export default {
         name:"index",
         components:{
-            HeadNav
+            HeadNav,LeftMenu
         }
     }
 </script>

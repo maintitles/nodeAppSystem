@@ -5,7 +5,7 @@ import Register from "../views/Register.vue"
 import Login from "../views/Login.vue"
 import Home from "../views/Home.vue"
 import InfoShow from '../views/InfoShow'
-// import FoundList from './views/FoundList'
+import FoundList from '../views/FoundList'
 import findError from "../views/404.vue"
 
 Vue.use(VueRouter)
@@ -27,7 +27,8 @@ const routes = [
         children:[
             {path:"",component:Home},
             {path:"/home",name:"home",component:Home},
-            {path:"/infoshow",name:"infoshow",component:InfoShow}
+            {path:"/infoshow",name:"infoshow",component:InfoShow},
+            {path:"/foundlist",name:"foundlist",component:FoundList}
         ]
     },
     {
