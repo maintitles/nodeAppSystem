@@ -39,8 +39,8 @@
                         <el-input type="textarea" v-model="form.remark"></el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-button @click="dialogVisible = false">取 消</el-button>
-                        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+                        <el-button @click="dialog.show = false">取 消</el-button>
+                        <el-button type="primary" @click="onSubmit">确 定</el-button>
                     </el-form-item> 
                 </el-form>
             </div>    
@@ -57,15 +57,6 @@
         },
         data(){
             return {
-                formData:{
-                    type:"",
-                    describe:"",
-                    income:"",
-                    expend:"",
-                    cash:"",
-                    remark:"",
-                    id:""
-                },
                 format_type:[
                     "提现",
                     "提现手续费",
@@ -74,6 +65,20 @@
                     "充值礼券",
                     "转账"
                 ]
+            }
+        },
+        methods:{
+            onSubmit(){
+                const dialogType = this.dialog.option == "add" ? "add" : "edit/"+this.form.id;
+                console.log(this.form)
+                this.$axios.post(`/api/profile/${dialogType}`,this.form).then( res => {
+                    this.$message({
+                        message: "保存成功！",
+                        type: "success"
+                    });
+                    this.dialog.show = false;
+                    this.$emit("update");//注册一个update事件  传给父组件
+                }) 
             }
         }   
     }
